@@ -1,27 +1,46 @@
 <mat-toolbar>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
   <span>My App</span>
   <span class="example-spacer"></span>
-  <section class="example-section">
-    <mat-slide-toggle
-      (click)="toggleTheme()"
-      class="example-margin"
-      [checked]="checked"
-      [disabled]="disabled"
+  <section
+    style="display: flex; justify-content: space-between; align-items: center"
+  >
+    <section
+      class="d-flex justify-content-center align-items-center gap-3 mx-3"
     >
-    </mat-slide-toggle>
-    <button mat-icon-button>
-      @if (themeS.themeSignal() === "dark"){
-      <mat-icon class="mat-18">bedtime</mat-icon>
-      } @else{
-      <mat-icon class="mat-18">sunny</mat-icon>
+      @if (translateS.currentLang==="en") {
+
+      <button
+        (click)="changeCurrentLang('ar')"
+        mat-raised-button
+        color="primary"
+      >
+        Arabic
+      </button>
+      } @else {
+      <button
+        (click)="changeCurrentLang('en')"
+        mat-raised-button
+        color="primary"
+      >
+        English
+      </button>
       }
-    </button>
+    </section>
+    <section class="example-section">
+      <mat-slide-toggle
+        class="example-margin"
+        [checked]="checked"
+        [disabled]="disabled"
+        (click)="toggleTheme()"
+      >
+      </mat-slide-toggle>
+      <button mat-icon-button>
+        @if (themeS.themeSignal() === "dark"){
+        <mat-icon class="mat-18">bedtime</mat-icon>
+        } @else{
+        <mat-icon class="mat-18">sunny</mat-icon>
+        }
+      </button>
+    </section>
   </section>
 </mat-toolbar>
